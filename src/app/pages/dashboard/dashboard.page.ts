@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardPage implements OnInit {
 
-  constructor() { }
+  cars;
+
+  constructor(
+    public firebaseService:FirebaseService
+  ) { 
+  }
 
   ngOnInit() {
+    this.getWhatsAppData()
+  }
+
+  getWhatsAppData(){
+    this.firebaseService.db.ref('/whatsappchat-246ad:/WhatsAppCarChat/').once('value').then((snapshot) => {
+      // console.log(snapshot.val());
+      this.cars = snapshot.val()
+      console.log(this.cars);
+    });
   }
 
 }

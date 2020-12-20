@@ -4,9 +4,30 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Dashboard</ion-title>
+   
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <div id="pt-columns">
+    <figure id="figure-{{i}}" *ngFor="let car of cars| keyvalue let i = index">
+      <ion-card id="ion-card-{{i}}" button="true">
+        <ion-card-header>
+          <ion-card-subtitle>{{car.value.Kilometraje}}<span *ngIf="car.value.Motor">, {{car.value.Motor}}</span>
+          </ion-card-subtitle>
+          <ion-card-title>{{car.value.Modelo}}, {{car.value.Marca}}</ion-card-title>
+        </ion-card-header>
+        <ion-slides pager="true" [options]="slideOpts">
+          <ion-slide *ngFor="let image of car.value.Images">
+            <img src="{{image}}">
+          </ion-slide>
+        </ion-slides>
+        <ion-card-content>
+          {{car.value['Standard Data']}}
+        </ion-card-content>
+      </ion-card>
+    </figure>
+  </div>
 
 </ion-content>

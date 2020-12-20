@@ -1,0 +1,15 @@
+.ui-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    width: 90%;
+    margin: auto;
+    transition-duration: 1s;
+}
+
+.bg-container{
+    background: var(--ion-color-primary);
+    background: linear-gradient(0deg, var(--ion-color-primary) -7%, var(--ion-color-danger) 50%);
+}
